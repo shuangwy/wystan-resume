@@ -1,0 +1,62 @@
+.home_base {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    // line-height: 300px;
+    color: yellow;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent url(../../../assets/home/home.jpg) center center no-repeat;
+        filter: blur(4px);
+        z-index: -1;
+        background-size: cover;
+        opacity: 0.8;
+    }
+
+
+    .menu {
+        padding-left: 120px;
+        padding-top: 30px;
+        text-align: left;
+        font-size: 20px;
+        color: #FFF;
+        cursor: pointer;
+
+        :hover {
+            color: yellow;
+        }
+
+    }
+
+
+    .content_font {
+        display: inline-block;
+        height: 60%; // 子元素和父元素等高
+        text-align: center; // 上下居中
+        letter-spacing: 3px; // 文字之间的间距
+        color: #fff;
+        font-size: 20px;
+        font-family: cursive;
+        -webkit-writing-mode: vertical-lr;
+        -ms-writing-mode: lr-tb;
+        writing-mode: vertical-lr; // 垂直由左向右排列多行
+    }
+}
+
+.drawer {
+    :global(.ant-drawer-content-wrapper) {
+        width: 220px;
+
+        :global(.ant-drawer-body) {
+            background-color: rgba(0, 0, 0, 0.5) !important;
+        }
+    }
+
+}

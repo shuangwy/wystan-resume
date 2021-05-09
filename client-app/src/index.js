@@ -18,14 +18,14 @@ function App() {
       <Router>
         <div>
           <Home />
-          <ul>
+          {/* <ul>
             <li>
               <Link to="/resume">resume</Link>
             </li>
             <li>
               <Link to="/protected">Login In</Link>
             </li>
-          </ul>
+          </ul> */}
           <Switch>
             <Route path="/resume" children={<PublicPage />} />
             <Route path="/login" children={<LoginPage />}></Route>
