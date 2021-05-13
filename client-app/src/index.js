@@ -16,9 +16,7 @@ function App() {
   return (
     <ProvideAuth>
       <Router>
-        <div>
-          <Home />
-          {/* <ul>
+        {/* <ul>
             <li>
               <Link to="/resume">resume</Link>
             </li>
@@ -26,14 +24,14 @@ function App() {
               <Link to="/protected">Login In</Link>
             </li>
           </ul> */}
-          <Switch>
-            <Route path="/resume" children={<PublicPage />} />
-            <Route path="/login" children={<LoginPage />}></Route>
-            <PrivateRoute path="/protected">
-              <ProtectedPage />
-            </PrivateRoute>
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/" children={<Home />} />
+          <Route path="/resume" children={<PublicPage />} />
+          <Route path="/login" children={<LoginPage />} />
+          <PrivateRoute path="/protected">
+            <ProtectedPage />
+          </PrivateRoute>
+        </Switch>
       </Router>
     </ProvideAuth>
   );
@@ -142,7 +140,6 @@ function LoginPage() {
 
   let { from } = location.state || { from: { pathname: "/" } };
   let login = () => {
-    console.log(123);
     auth.signin(() => {
       history.replace(from);
     });

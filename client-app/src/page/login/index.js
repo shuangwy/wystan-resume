@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Divider, Typography } from "antd";
+import { Form, Input, Button, Divider, Typography, notification } from "antd";
 import style from "./index.less";
 const { Title, Text } = Typography;
 import Img from "assets/img/camera/back.JPG";
@@ -21,8 +21,16 @@ const Login = ({ loginApp }) => {
   const {
     actions: { login },
   } = SessionModel;
+  const onFailure = () => {
+    notification.warning({
+      message: "Login Failure",
+      description: "Please contact the administrator to apply for the account",
+      duration: 3,
+    });
+  };
+  const onSuccess = () => {};
   const onFinish = (values) => {
-    dispatch(login(values));
+    dispatch(login({ ...values, onSuccess, onFailure }));
     loginApp();
   };
   const onFinishFailed = (errorInfo) => {

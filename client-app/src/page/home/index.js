@@ -1,8 +1,26 @@
 import React, { useState } from "react";
 import style from "./index.less";
-import { Layout, Drawer } from "antd";
+import { Layout, Drawer, List, Avatar } from "antd";
 const { Header, Footer, Content } = Layout;
 import { MenuOutlined } from "@ant-design/icons";
+import Avator from "../../../assets/home/avator.jpg";
+import Tree from "../../../assets/home/tree.jpeg";
+import { Link } from "react-router-dom";
+const data = [
+  {
+    title: "Ant Design Title 1",
+    profile: Avator,
+    title: <Link to="/login">Login In</Link>,
+  },
+  {
+    title: "resume",
+    profile: Tree,
+  },
+  {
+    title: "简历",
+    profile: Avator,
+  },
+];
 const Home = () => {
   const [sideShow, setSiderShow] = useState(false);
   return (
@@ -22,9 +40,22 @@ const Home = () => {
         closable
         className={style.drawer}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <List
+          itemLayout="horizontal"
+          dataSource={data}
+          renderItem={(item) => {
+            console.log("item", item);
+            return (
+              <List.Item>
+                <List.Item.Meta
+                  avatar={<Avatar src={item.profile} />}
+                  title={item.title}
+                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                />
+              </List.Item>
+            );
+          }}
+        />
       </Drawer>
     </div>
   );
