@@ -1,24 +1,30 @@
 import React, { useState } from "react";
 import style from "./index.less";
 import { Layout, Drawer, List, Avatar } from "antd";
-const { Header, Footer, Content } = Layout;
+const { Content } = Layout;
 import { MenuOutlined } from "@ant-design/icons";
 import Avator from "../../../assets/home/avator.jpg";
 import Tree from "../../../assets/home/tree.jpeg";
+import Login from "../../../assets/home/login.png";
+
 import { Link } from "react-router-dom";
 const data = [
   {
-    title: "Ant Design Title 1",
-    profile: Avator,
+    profile: Login,
     title: <Link to="/login">Login In</Link>,
+    description:
+      "I believe every human has a finite number of heartbeats. I don't intend to waste any of mine. ",
   },
   {
-    title: "resume",
+    title: <Link to="/resume">Resume</Link>,
     profile: Tree,
+    description:
+      "If you want to achieve something or intend to fulfill one of your ambitions, you must make efforts and prepared.Otherwise you will take no advantage of opportunities when come to visit you.",
   },
   {
     title: "简历",
     profile: Avator,
+    description: "暂未开放,看点别的吧",
   },
 ];
 const Home = () => {
@@ -44,13 +50,12 @@ const Home = () => {
           itemLayout="horizontal"
           dataSource={data}
           renderItem={(item) => {
-            console.log("item", item);
             return (
               <List.Item>
                 <List.Item.Meta
                   avatar={<Avatar src={item.profile} />}
                   title={item.title}
-                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                  description={item.description}
                 />
               </List.Item>
             );

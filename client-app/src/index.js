@@ -1,6 +1,6 @@
 import React, { useContext, createContext, useState } from "react";
 import "antd/dist/antd.css";
-import { Login, Home } from "./page";
+import { Login, Home, Resume } from "./page";
 import "./index.css";
 import {
   BrowserRouter as Router,
@@ -26,7 +26,7 @@ function App() {
           </ul> */}
         <Switch>
           <Route exact path="/" children={<Home />} />
-          <Route path="/resume" children={<PublicPage />} />
+          <Route path="/resume" children={<Resume />} />
           <Route path="/login" children={<LoginPage />} />
           <PrivateRoute path="/protected">
             <ProtectedPage />
