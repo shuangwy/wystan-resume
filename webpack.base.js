@@ -125,7 +125,7 @@ module.exports = {
       models: path.resolve(__dirname, "./client-app/src/models"),
       assets: path.resolve(__dirname, "./client-app/assets"),
     },
-    extensions: [".js", ".css", ".json"],
+    extensions: [".js", ".css", ".json", ".pdf"],
   },
   module: {
     rules: [
@@ -174,7 +174,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif|pdf)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
             loader: "url-loader",
@@ -195,12 +195,14 @@ module.exports = {
       },
       {
         test: /\.pdf$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            name: "doc/[name].[ext]",
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[hash]-[name].[ext]",
+            },
           },
-        },
+        ],
       },
     ],
   },
