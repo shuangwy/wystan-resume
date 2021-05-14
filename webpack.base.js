@@ -107,7 +107,7 @@ module.exports = {
     new CopyWebpackPulgin({
       patterns: [{ from: "./client-app/doc", to: "./doc" }],
     }),
-    new Webpack.BannerPlugin({ banner: "make 2020 by wystan" }), //添加版权信息
+    new Webpack.BannerPlugin({ banner: "make 2021 5 by wystan" }), //添加版权信息
     new Webpack.DefinePlugin({
       SERVICE_URL: JSON.stringify("https://wyshuang.com"),
     }),
