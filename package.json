@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "homepage": "./",
   "scripts": {
     "build": "cross-env NODE_ENC=production webpack --config webpack.prod.js",
     "build-dev": "cross-env NODE_ENV=dev webpack --config webpack.dev.js",
@@ -39,6 +40,8 @@
     "normalizr": "^3.6.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "style-loader": "^1.2.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.0",
@@ -61,7 +64,6 @@
     "react-dom": "^16.13.1",
     "react-pdf": "^5.3.0",
     "react-redux": "^7.2.1",
-    "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   }

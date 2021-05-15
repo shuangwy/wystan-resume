@@ -3,37 +3,27 @@ import "antd/dist/antd.css";
 import { Login, Home, Resume } from "./page";
 import "./index.css";
 import {
-  BrowserRouter as Router,
-  Switch,
   Route,
-  Link,
-  Redirect,
+  HashRouter,
+  Switch,
   useHistory,
   useLocation,
 } from "react-router-dom";
 
 function App() {
   return (
-    <ProvideAuth>
-      <Router>
-        {/* <ul>
-            <li>
-              <Link to="/resume">resume</Link>
-            </li>
-            <li>
-              <Link to="/protected">Login In</Link>
-            </li>
-          </ul> */}
+    <HashRouter>
+      <ProvideAuth>
         <Switch>
-          <Route exact path="/" children={<Home />} />
-          <Route path="/resume" children={<Resume />} />
-          <Route path="/login" children={<LoginPage />} />
+          <Route exact path="/" component={Home} />
+          <Route path="/resume" component={Resume} />
+          <Route path="/login" component={LoginPage} />
           <PrivateRoute path="/protected">
             <ProtectedPage />
           </PrivateRoute>
         </Switch>
-      </Router>
-    </ProvideAuth>
+      </ProvideAuth>
+    </HashRouter>
   );
 }
 

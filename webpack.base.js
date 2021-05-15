@@ -174,12 +174,12 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|pdf)$/i,
         use: [
           {
             loader: "url-loader",
             options: {
-              limit: 200 * 1024,
+              limit: 20 * 1024,
               outputPath: "images",
               name: "[hash]-[name].[ext]",
               // publicPath:'www.wyshuang.com', 为图片单独添加路径前缀

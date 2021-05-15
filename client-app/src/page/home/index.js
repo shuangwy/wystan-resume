@@ -35,7 +35,7 @@ const Home = () => {
         <MenuOutlined onClick={() => setSiderShow(!sideShow)} />
       </div>
       <Content>
-        <div className={style.content_font}>生命不息，奋斗不止</div>
+        <div className={style.content_font}>生命不息，折腾不止</div>
       </Content>
       <Drawer
         placement="left"
