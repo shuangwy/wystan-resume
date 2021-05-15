@@ -3,7 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPulgin = require('copy-webpack-plugin'); //拷贝资源到dist
 const Webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack'); //启用多线程打包
 require('@babel/polyfill');
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
