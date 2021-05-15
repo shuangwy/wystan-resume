@@ -22,7 +22,7 @@ const data = [
       "If you want to achieve something or intend to fulfill one of your ambitions, you must make efforts and prepared.Otherwise you will take no advantage of opportunities when come to visit you.",
   },
   {
-    title: "简历",
+    title: <Link to="/layout-resume">简历</Link>,
     profile: Avator,
     description: "暂未开放,看点别的吧",
   },

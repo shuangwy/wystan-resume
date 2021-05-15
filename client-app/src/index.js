@@ -1,6 +1,6 @@
 import React, { useContext, createContext, useState } from "react";
 import "antd/dist/antd.css";
-import { Login, Home, Resume } from "./page";
+import { Login, Home, Resume, LayoutResume } from "./page";
 import "./index.css";
 import {
   Route,
@@ -18,6 +18,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/resume" component={Resume} />
           <Route path="/login" component={LoginPage} />
+          <Route path="/layout-resume" component={LayoutResume} />
           <PrivateRoute path="/protected">
             <ProtectedPage />
           </PrivateRoute>

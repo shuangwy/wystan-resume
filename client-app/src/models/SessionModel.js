@@ -1,88 +1,88 @@
-import callApi, { AsyncAction } from "../services/call";
+import callApi, { AsyncAction } from '../services/call';
 // import { cookie } from '../utils/helper';
 // import RouterModel from './RouterModel';
-const KEEP_ACCESS_TOKEN = "KEEP_ACCESS_TOKEN";
-const KEEP_LOGIN_USER = "KEEP_LOGIN_USER";
-const LOGOUT = "LOGOUT";
-const REMOVE_ACCESS_TOKEN = "REMOVE_ACCESS_TOKEN";
-const REMOVE_LOGIN_USER = "REMOVE_LOGIN_USER";
-const REMOVE_IS_LOGIN_SUCCESS = "REMOVE_IS_LOGIN_SUCCESS";
+const KEEP_ACCESS_TOKEN = 'KEEP_ACCESS_TOKEN';
+const KEEP_LOGIN_USER = 'KEEP_LOGIN_USER';
+const LOGOUT = 'LOGOUT';
+const REMOVE_ACCESS_TOKEN = 'REMOVE_ACCESS_TOKEN';
+const REMOVE_LOGIN_USER = 'REMOVE_LOGIN_USER';
+const REMOVE_IS_LOGIN_SUCCESS = 'REMOVE_IS_LOGIN_SUCCESS';
 const SessionModel = (function () {
-  const name = "SessionModels";
-  const LOGIN_REQUEST_ACTION = AsyncAction(`${name}/LOGIN`);
-  return {
-    name,
-    state: {
-      access: {
-        defaultState: "wystanshuang",
-        reducers: {
-          [LOGIN_REQUEST_ACTION.REQUEST]: (state, action) => {
-            return 123;
-          },
-          [LOGIN_REQUEST_ACTION.FAILURE]: (state, action) => {
-            return 123;
-          },
-          [LOGIN_REQUEST_ACTION.SUCCESS]: (state, action) => {
-            console.log("state", state, action);
-            return 123;
-          },
+    const name = 'SessionModels';
+    const LOGIN_REQUEST_ACTION = AsyncAction(`${name}/LOGIN`);
+    return {
+        name,
+        state: {
+            access: {
+                defaultState: 'wystanshuang',
+                reducers: {
+                    [LOGIN_REQUEST_ACTION.REQUEST]: (state, action) => {
+                        return 123;
+                    },
+                    [LOGIN_REQUEST_ACTION.FAILURE]: (state, action) => {
+                        return 123;
+                    },
+                    [LOGIN_REQUEST_ACTION.SUCCESS]: (state, action) => {
+                        console.log('state', state, action);
+                        return 123;
+                    },
+                },
+            },
+            isFetching: {
+                defaultState: false,
+                reducers: {
+                    [LOGIN_REQUEST_ACTION.REQUEST]: () => true,
+                    [LOGIN_REQUEST_ACTION.SUCCESS]: () => false,
+                    [LOGIN_REQUEST_ACTION.FAILURE]: () => false,
+                },
+            },
         },
-      },
-      isFetching: {
-        defaultState: false,
-        reducers: {
-          [LOGIN_REQUEST_ACTION.REQUEST]: () => true,
-          [LOGIN_REQUEST_ACTION.SUCCESS]: () => false,
-          [LOGIN_REQUEST_ACTION.FAILURE]: () => false,
+        actions: {
+            login: ({ username, password, onSuccess, onFailure }) =>
+                callApi({
+                    uri: '/api/user/login',
+                    method: 'POST',
+                    params: { username, password },
+                    LOGIN_REQUEST_ACTION,
+                    onSuccess,
+                    onFailure,
+                }),
+            keepAccessToken: ({ accessToken }) => ({
+                type: KEEP_ACCESS_TOKEN,
+                payload: accessToken,
+            }),
+            removeAccessToken: () => ({
+                type: REMOVE_ACCESS_TOKEN,
+            }),
+            /* 保存登录用户信息 */
+            keepLoginUser: ({ loginUser }) => ({
+                type: KEEP_LOGIN_USER,
+                payload: loginUser,
+            }),
+            removeLoginUser: () => ({
+                type: REMOVE_LOGIN_USER,
+            }),
+            /* 设置登录成功标识 */
+            loginSuccess: () => ({
+                type: LOGIN_REQUEST_ACTION.SUCCESS,
+            }),
+            removeIsLoginSuccess: () => ({
+                type: REMOVE_IS_LOGIN_SUCCESS,
+            }),
+            /* 退出登录 */
+            logout: () => ({
+                type: LOGOUT,
+            }),
         },
-      },
-    },
-    actions: {
-      login: ({ username, password, onSuccess, onFailure }) =>
-        callApi({
-          uri: "/api/user/login",
-          method: "POST",
-          params: { username, password },
-          LOGIN_REQUEST_ACTION,
-          onSuccess,
-          onFailure,
-        }),
-      keepAccessToken: ({ accessToken }) => ({
-        type: KEEP_ACCESS_TOKEN,
-        payload: accessToken,
-      }),
-      removeAccessToken: () => ({
-        type: REMOVE_ACCESS_TOKEN,
-      }),
-      /* 保存登录用户信息 */
-      keepLoginUser: ({ loginUser }) => ({
-        type: KEEP_LOGIN_USER,
-        payload: loginUser,
-      }),
-      removeLoginUser: () => ({
-        type: REMOVE_LOGIN_USER,
-      }),
-      /* 设置登录成功标识 */
-      loginSuccess: () => ({
-        type: LOGIN_REQUEST_ACTION.SUCCESS,
-      }),
-      removeIsLoginSuccess: () => ({
-        type: REMOVE_IS_LOGIN_SUCCESS,
-      }),
-      /* 退出登录 */
-      logout: () => ({
-        type: LOGOUT,
-      }),
-    },
-    selectors: (state) => {
-      const currentState = state[name];
-      return {
-        getLoginUser: () => currentState.loginUser,
-        getIsLoginSuccess: () => currentState.isLoginSuccess,
-        getIsLoginFetching: () => currentState.isLoginFetching,
-        getAccessToken: () => currentState.accessToken,
-      };
-    },
+        selectors: (state) => {
+            const currentState = state[name];
+            return {
+                getLoginUser: () => currentState.loginUser,
+                getIsLoginSuccess: () => currentState.isLoginSuccess,
+                getIsLoginFetching: () => currentState.isLoginFetching,
+                getAccessToken: () => currentState.accessToken,
+            };
+        },
     // state: {
     //     accessToken: {},
     //     loginUser: {},
@@ -154,6 +154,6 @@ const SessionModel = (function () {
     //         }
     //     }
     // }
-  };
+    };
 })();
 export default SessionModel;

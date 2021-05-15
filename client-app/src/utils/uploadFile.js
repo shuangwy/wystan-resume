@@ -1,23 +1,22 @@
 /**
  * Forp大文件断点上传类
  *
- * Copyright © 2018 FORP Co., LTD
  * All Rights Reserved.
  */
 
 // **注意**：Tiny-Worker只能执行NodeJs环境，普通Javascript语法无法执行
 
 const fs = window.require('fs');
-const request  = window.require('request');
+const request = window.require('request');
 const sleep = window.require('thread-sleep');
 // Log4js
 const log4js = window.require('log4js');
 log4js.configure({
-    "appenders":
+    'appenders':
     {
-        "file": {"type": "file", "filename": "file-assistant.log", "maxLogSize": 10485760, "backups": 10, "layout": {"type": "pattern", "pattern": "[%d{yyyy-MM-dd hh:mm:ss}] %p %m"}}
+        'file': { 'type': 'file', 'filename': 'file-assistant.log', 'maxLogSize': 10485760, 'backups': 10, 'layout': { 'type': 'pattern', 'pattern': '[%d{yyyy-MM-dd hh:mm:ss}] %p %m' }}
     },
-    "categories": {"default": {"appenders": ["file"], "level": "debug"}}
+    'categories': { 'default': { 'appenders': ['file'], 'level': 'debug' }}
 });		// 只能在打包后环境中执行
 const lg = log4js.getLogger('file');
 // 全局变量
@@ -26,8 +25,8 @@ var FORP, task, endPosition, errorTimes = 0;
 /**
  * 接收主线程消息
  */
-const uploadFile={
-    onmessage:function(event)
+const uploadFile = {
+    onmessage: function (event)
     {
         // FORP信息
         if (event.data.FORP)
@@ -65,13 +64,13 @@ const uploadFile={
     /**
      * 上传文件片段
      */
-    uploadTrunk:function()
+    uploadTrunk: function ()
     {
         try
         {
             if ('running' != task.status)
             {
-                postMessage({cmd: 'statusChanged', task: task});
+                postMessage({ cmd: 'statusChanged', task: task });
                 lg.info('上传Worker结束运行[' + task.id + ']' + task.status);
                 return;
             }
@@ -85,7 +84,7 @@ const uploadFile={
 
                 task.status = 'finished';
                 // 文件上传完成
-                postMessage({cmd: 'finished', task: task});
+                postMessage({ cmd: 'finished', task: task });
                 return;
             }
 
@@ -117,20 +116,20 @@ const uploadFile={
             // 请求参数
             var	params =
             {
-                url: FORP.host + '/fileassistant/upload/' + task.id, headers: {'powed-by': 'Forp'}, method: 'POST', json: true,
+                url: FORP.host + '/fileassistant/upload/' + task.id, headers: { 'powed-by': 'Forp' }, method: 'POST', json: true,
                 formData:
                 {
                     p1: FORP.p1, position: task.position, // trunkSize: readed,
                     trunk:
                     {
-                        value: fs.createReadStream(task.filePath, {start: task.position, end: endPosition}),
-                        options: {filename: task.fileName}
+                        value: fs.createReadStream(task.filePath, { start: task.position, end: endPosition }),
+                        options: { filename: task.fileName }
                     }
                 }
             };
 
             // 发送HTTP请求
-            request(params, function(err, rsp, body)
+            request(params, function (err, rsp, body)
             {
                 // lg.debug(body);
                 if (body && body.code && 200 == body.code)
@@ -163,7 +162,7 @@ const uploadFile={
                     // 后移文件上传进度
                     task.position = task.position + readed;
                     // 刷新上传进度
-                    postMessage({cmd: 'progress', task: task, preFinishTime: preFinishTime, finished: readed});
+                    postMessage({ cmd: 'progress', task: task, preFinishTime: preFinishTime, finished: readed });
                     return this.uploadTrunk();
                 }
                 else
@@ -173,7 +172,7 @@ const uploadFile={
                     if (errorTimes >= 3)
                     {
                         task.status = 'error';
-                        postMessage({cmd: 'statusChanged', task: task});
+                        postMessage({ cmd: 'statusChanged', task: task });
                         lg.error(errorTimes + '次重试后依然上传错误，忽律上传任务[' + task.filePath + ']');
                         return;
                     }
@@ -190,9 +189,9 @@ const uploadFile={
         catch (err)
         {
             task.status = 'error';
-            postMessage({cmd: 'statusChanged', task: task});
+            postMessage({ cmd: 'statusChanged', task: task });
             lg.error('文件上传失败：' + err.message);
         }
     }
 };
-export default  uploadFile;
+export default uploadFile;
