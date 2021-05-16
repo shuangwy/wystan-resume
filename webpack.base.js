@@ -101,10 +101,8 @@ module.exports = {
         }),
         new CopyWebpackPulgin({
             patterns: [
-                { from: './client-app/doc', to: './doc' },
-                {
-                    from: './client-app/assets/home/resume.pdf', to: './'
-                }],
+                { from: './client-app/doc', to: './doc' }, { from: './client-app/assets/home/resume.pdf', to: './doc' }
+            ],
         }),
         new Webpack.BannerPlugin({ banner: 'make 2021 5 by wystan' }), //添加版权信息
         new Webpack.DefinePlugin({

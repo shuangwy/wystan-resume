@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 const Resume = () => {
-    useEffect(() => {}, []);
     return (<div>
-        <a href='./resume.pdf' target='_blank'>
+        <a href='./doc/resume.pdf' target='_blank'>
             <p>  Click to open PDF file in a new tab </p>
         </a>
     </div>

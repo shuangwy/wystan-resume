@@ -3,9 +3,9 @@ import style from './index.less';
 import { Layout, Drawer, List, Avatar } from 'antd';
 const { Content } = Layout;
 import { MenuOutlined } from '@ant-design/icons';
-import Avator from '../../../assets/home/avator.jpg';
-import Tree from '../../../assets/home/tree.jpeg';
-import Login from '../../../assets/home/login.png';
+import Avator from 'assets/home/avator.jpg';
+import Tree from 'assets/home/tree.jpeg';
+import Login from 'assets/home/login.png';
 
 import { Link } from 'react-router-dom';
 const data = [

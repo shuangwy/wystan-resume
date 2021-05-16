@@ -10,11 +10,13 @@ import {
     useLocation,
     Redirect
 } from 'react-router-dom';
-useEffect(() => {
-    console.log('window', window);
-}, []);
+import { detectMob } from '@/utils/helper'
 
 function App () {
+    useEffect(() => {
+	 console.log(11, detectMob())
+    }, []);
+
     return (
         <HashRouter>
             <ProvideAuth>

@@ -229,5 +229,13 @@ const resolveUrl = (uri, params, host) => {
     });
     return encodeURI(`${url}?${query}`);
 };
+const detectMob = () => {
+    const toMatch = [
+        /Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i, /BlackBerry/i, /Windows Phone/i
+    ];
+    return toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+    });
+}
 
-export { resolveUrl };
+export { resolveUrl, detectMob };
