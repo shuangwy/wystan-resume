@@ -79,7 +79,15 @@ module.exports = {
                         sourceMap: true,
                     },
                 },
-                'postcss-loader',
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        postcssOptions: {
+                            // 浏览器兼容性处理
+                            plugins: ['postcss-preset-env'],
+                        },
+                    },
+                },
                 {
                     loader: 'less-loader',
                     options: {
@@ -201,9 +209,6 @@ module.exports = {
                                 interlaced: false,
                             },
                             // the webp option will enable WEBP
-                            webp: {
-                                quality: 75,
-                            },
                         },
                     },
                 ],
