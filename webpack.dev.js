@@ -11,7 +11,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 module.exports = merge(base, {
     mode: 'development',
     devServer: {
-        port: 3000,
+        port: 3001,
         compress: true,
         progress: true, //启动压缩
         contentBase: path.join(__dirname, 'dist'),
