@@ -1,6 +1,6 @@
 import React, { useContext, createContext, useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
-import { Login, Home, Resume, LayoutResume } from './page';
+import { Login } from './page';
 import './index.css';
 import {
     Route,
@@ -8,23 +8,28 @@ import {
     Switch,
     useHistory,
     useLocation,
-    Redirect
+    Redirect,
+    withRouter
 } from 'react-router-dom';
-import { detectMob } from '@/utils/helper'
+import { routes } from './page/route'
 
 function App () {
     useEffect(() => {
-	 console.log(11, detectMob())
+        console.log('this is enter')
     }, []);
 
     return (
         <HashRouter>
             <ProvideAuth>
                 <Switch>
-                    <Route exact path='/' component={Home} />
-                    <Route path='/resume' component={Resume} />
-                    <Route path='/login' component={LoginPage} />
-                    <Route path='/layout-resume' component={LayoutResume} />
+                    {routes.map(({ path, component, title, ...rest }) => {
+                        return <Route path={path} key={path} render={() => {
+                            document.title = title || 'wystan'
+                            const Cmp = withRouter(component)
+                            return <Cmp/>
+                        }} {...rest} />
+                    })}
+                    <Route path='/login' component={withRouter(LoginPage)} />
                     <PrivateRoute path='/protected'>
                         <ProtectedPage />
                     </PrivateRoute>

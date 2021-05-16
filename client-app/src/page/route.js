@@ -1,23 +1,20 @@
+
+import { Home, Resume, LayoutResume } from './index';
 const routes = [
-  {
-    path: "/",
-    exact: true,
-    sidebar: () => <div>home!</div>,
-    main: () => <h2>Home</h2>,
-  },
-  {
-    path: "/bubblegum",
-    sidebar: () => <div>eer</div>,
-    main: () => (
-      <div>
-        <Login />
-      </div>
-    ),
-  },
-  {
-    path: "/shoelaces",
-    sidebar: () => <div>shoelaces!</div>,
-    main: () => <h2>Shoelaces</h2>,
-  },
+    {
+        path: '/',
+        exact: true,
+        component: Home,
+        title: 'Welcome to wystan station'
+    },
+    {
+        path: '/resume',
+        component: Resume,
+        title: '王爽简历-前端-4年'
+    },
+    {
+        path: '/layout-resume',
+        component: LayoutResume
+    },
 ];
 export { routes };
