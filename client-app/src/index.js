@@ -34,11 +34,11 @@ function App () {
 
 const fakeAuth = {
     isAuthenticated: false,
-    signin (cb) {
+    signIn (cb) {
         fakeAuth.isAuthenticated = true;
         setTimeout(cb, 100); // fake async
     },
-    signout (cb) {
+    signOut (cb) {
         fakeAuth.isAuthenticated = false;
         setTimeout(cb, 100);
     },
@@ -60,15 +60,15 @@ function useAuth () {
 function useProvideAuth () {
     const [user, setUser] = useState(null);
 
-    const signin = (cb) => {
-        return fakeAuth.signin(() => {
+    const signIn = (cb) => {
+        return fakeAuth.signIn(() => {
             setUser('user');
             cb();
         });
     };
 
-    const signout = (cb) => {
-        return fakeAuth.signout(() => {
+    const signOut = (cb) => {
+        return fakeAuth.signOut(() => {
             setUser(null);
             cb();
         });
@@ -76,8 +76,8 @@ function useProvideAuth () {
 
     return {
         user,
-        signin,
-        signout,
+        signIn,
+        signOut,
     };
 }
 
@@ -91,7 +91,7 @@ function useProvideAuth () {
 //             {' '}
 //             <button
 //                 onClick={() => {
-//                     auth.signout(() => history.push('/'));
+//                     auth.signOut(() => history.push('/'));
 //                 }}
 //             >
 //                 Sign out
@@ -130,7 +130,7 @@ function LoginPage () {
 
     let { from } = location.state || { from: { pathname: '/' }};
     let login = () => {
-        auth.signin(() => {
+        auth.signIn(() => {
             history.replace(from);
         });
     };
