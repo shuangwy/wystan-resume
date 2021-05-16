@@ -214,10 +214,14 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(pdf|svg)$/i,
+                test: /\.svg$/i,
                 use: [
                     {
                         loader: 'file-loader',
+                        options: {
+                            outputPath: 'images/svg',
+                            name: '[path][name].[ext]',
+                        },
                     },
                 ],
             },
