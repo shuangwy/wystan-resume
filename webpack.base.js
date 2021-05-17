@@ -219,8 +219,8 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            outputPath: 'images/svg',
-                            name: '[path][name].[ext]',
+                            outputPath: 'svg',
+                            name: '[hash]-[name].[ext]',
                         },
                     },
                 ],
