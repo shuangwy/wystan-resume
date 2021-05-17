@@ -48,6 +48,9 @@ const data = [
     },
    
 ];
+const dataList = [
+    'Racing car sprays burning fuel into crowd.', 'Japanese princess to wed commoner.', 'Australian walks 100km after outback crash.', 'Man charged over missing wedding girl.', 'Los Angeles battles huge wildfires.',
+];
 
 const Resume = (props) => {
     return (
@@ -68,9 +71,32 @@ const Resume = (props) => {
                             </List.Item>
                         )}
                     />
-                    <div className={style._title}> 工作经历</div>
                     <Divider/>
-                    未完待续
+                    <div className={style._title}> 工作经历</div>
+                    <List
+                        header='2019/9-2021/6 | 文思海辉元辉科技(深圳)有限公司 、深圳名图信息技术有限公司'
+                        bordered
+                        split={false}
+                        dataSource={dataList}
+                        renderItem={item => (
+                            <List.Item>
+                                <Typography.Text mark>[ITEM]</Typography.Text> 
+                                {item}
+                            </List.Item>
+                        )}
+                    />
+                    <List
+                        header='2018/3-2019/9 | 深圳市华云信息技术有限公司'
+                        bordered
+                        split={false}
+                        dataSource={dataList}
+                        renderItem={item => (
+                            <List.Item>
+                                <Typography.Text mark>[ITEM]</Typography.Text> 
+                                {item}
+                            </List.Item>
+                        )}
+                    />
                 </div>
                 <div className={style.part_right}>
                     

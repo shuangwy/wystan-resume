@@ -12,6 +12,7 @@ body {
 
     ._part {
         width: 60rem;
+        height: 85rem;
         box-shadow: 5px 7px 10px 10px #999999;
         display: flex;
         flex-direction: row;
@@ -21,16 +22,21 @@ body {
         }
         .part_left {
             width: 40%;
+            height: 100%;
             background-color: hsl(0 0% 97%);
             ._title {
-                font-size: 1.4em;
+                font-size: 1.5rem;
                 padding-left: 4rem;
                 text-align: left;
-                margin-top: 1.2em;
+                margin-top: 0.8em;
                 margin-bottom: 0.6em;
                 line-height: 1.35;
                 color: #868789;
             }
+            // :global(.ant-list-header) {
+            //     font-size: 1.5rem;
+            //     color: #868789;
+            // }
             :global(.ant-divider) {
                 margin: 0 4rem;
                 margin-bottom: 10px;
@@ -45,18 +51,22 @@ body {
                     width: 1rem;
                 }
                 :global(.ant-list-item-meta-avatar) {
-                    font-size: 1.2em;
+                    font-size: 1.2rem;
                     img {
-                        width: 1.2em;
+                        width: 1.2rem;
                     }
                 }
                 :global(.ant-list-item) {
                     padding: 4px 0;
-                    font-size: 1em;
+                    font-size: 1.2em;
                 }
                 :global(.ant-list-item-meta-title) {
-                    font-size: 1em;
+                    font-size: 1.2em;
                 }
+            }
+            :global(.ant-list-bordered) {
+                padding-left: 2rem;
+                padding-right: 0.5rem;
             }
         }
         .part_right {
@@ -67,8 +77,8 @@ body {
     @media (min-width: 300px) and (max-width: 750px) {
         ._part {
             width: 100%;
+            height: 100%;
             .part_left {
-                width: 80%;
                 :global(.ant-divider-horizontal) {
                     width: calc(~"100% - 5rem") !important;
                     min-width: calc(~"100% - 5rem") !important;
@@ -80,9 +90,10 @@ body {
             }
         }
     }
-    @media (max-width: 402px) {
+    @media (max-width: 415px) {
         ._part {
             width: 100%;
+            height: 100%;
             .part_left {
                 width: 100%;
             }
