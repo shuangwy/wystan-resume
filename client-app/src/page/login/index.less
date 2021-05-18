@@ -4,15 +4,36 @@
     background-color: #eaeefa;
     display: flex;
     justify-content: center;
+    flex-direction: row;
     /*使子项目水平居中*/
     align-items: center;
+    .login_back_left {
+        height: 25vw;
+        font-size: 30px;
+        width: 30%;
+        background: linear-gradient(
+            90deg,
+            red,
+            orange,
+            yellow,
+            green,
+            #1d4afb,
+            purple
+        );
+
+        img {
+            height: 100%;
+            width: 100%;
+            opacity: 0.8;
+        }
+    }
 
     .login_wrapper_inner {
+        height: 25vw;
+        overflow: hidden;
         background: #fff;
         padding: 40px 25px;
         box-shadow: 10px 5px 5px #888888;
-        width: 30vw;
-
         .login_title {
             color: #1d4afb;
         }
@@ -47,48 +68,16 @@
             }
         }
     }
-
-    .login_back_left {
-        height: 25vw;
-        width: 25vw;
-        font-size: 30px;
-        background: linear-gradient(
-            90deg,
-            red,
-            orange,
-            yellow,
-            green,
-            #1d4afb,
-            purple
-        );
-        // &:after {
-        //     content: "";
-        //     background-size: 100%;
-        //     background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
-        //     opacity: 0.5; //透明度设置
-        //     z-index: 1;
-        //     height: 320px;
-        //     width: 320px;
-        //     position: absolute;
-        //     //一定要设置position:absolute,这样才能设置z-index，让背景处于内容的下一层
-        //     // top: 0px;
-        //     // left: 0px;
-        //     border-radius: 50%;
-        // }
-
-        img {
-            height: 100%;
-            width: 100%;
-            opacity: 0.8;
-        }
-    }
 }
 @media (min-width: 100px) and (max-width: 550px) {
-    .login_back_left {
-        display: none !important;
-    }
-    .login_wrapper_inner {
-        width: 100% !important;
-        height: 100vh;
+    .login_wrapper {
+        .login_back_left {
+            flex: 0;
+        }
+        .login_wrapper_inner {
+            padding-top: 100px;
+            height: 100vh !important;
+            flex: 1;
+        }
     }
 }

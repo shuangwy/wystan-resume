@@ -1,11 +1,8 @@
 /* .antbody {
     font-size: 200px;
     background: red;
-
-    
     }
 }
-
 // :global(.ant-space-vertical) {
 //     margin-bottom: 120px;
 // } */
@@ -15,7 +12,32 @@
 #root >div{
     width: 100%;
 }
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+    margin:0;
+    padding:0;
+}
+a {
+  text-decoration: none;
+}
+ul,ol {
+  margin: 0;
+  padding: 0;  list-style: none;
+}
+img {
+    vertical-align: top
+}
+input,button { 
+     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+button {  
+-webkit-appearance: none;
+  border-radius: 0;
+}
 
+body { 
+    -webkit-text-size-adjust: 100%;
+  font-family: Helvetica;
+}
 /* div {
     height: 500px;
     width: 500px;
