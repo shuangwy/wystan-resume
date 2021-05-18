@@ -3,7 +3,6 @@ let base = require('./webpack.base')
 const OptimizeCss = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 module.exports = merge(base, {
     mode: 'production',
     optimization: { //生产环境下才会css压缩一行
@@ -14,7 +13,6 @@ module.exports = merge(base, {
                 parallel: true,
                 sourceMap: true, //方便映射调试
             }),
-            new CssMinimizerPlugin()
         ],
         splitChunks: {
             cacheGroups: {
