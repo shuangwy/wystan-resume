@@ -1,12 +1,14 @@
 import callApi, { AsyncAction } from '../services/call';
 // import { cookie } from '../utils/helper';
 // import RouterModel from './RouterModel';
+import md5 from 'blueimp-md5'
 const KEEP_ACCESS_TOKEN = 'KEEP_ACCESS_TOKEN';
 const KEEP_LOGIN_USER = 'KEEP_LOGIN_USER';
 const LOGOUT = 'LOGOUT';
 const REMOVE_ACCESS_TOKEN = 'REMOVE_ACCESS_TOKEN';
 const REMOVE_LOGIN_USER = 'REMOVE_LOGIN_USER';
 const REMOVE_IS_LOGIN_SUCCESS = 'REMOVE_IS_LOGIN_SUCCESS';
+const CRYPTO_KEY = 'WYSTAN_S_WANG'
 const SessionModel = (function () {
     const name = 'SessionModels';
     const LOGIN_REQUEST_ACTION = AsyncAction(`${name}/LOGIN`);
@@ -38,15 +40,16 @@ const SessionModel = (function () {
             },
         },
         actions: {
-            login: ({ username, password, onSuccess, onFailure }) =>
-                callApi({
+            login: ({ username, password, onSuccess, onFailure }) => {
+                return callApi({
                     uri: '/api/user/login',
                     method: 'POST',
-                    params: { username, password },
+                    params: { username: username, password: md5(password, CRYPTO_KEY) },
                     LOGIN_REQUEST_ACTION,
                     onSuccess,
                     onFailure,
-                }),
+                })
+            },
             keepAccessToken: ({ accessToken }) => ({
                 type: KEEP_ACCESS_TOKEN,
                 payload: accessToken,
