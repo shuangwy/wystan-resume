@@ -40,7 +40,7 @@ const data = [
         avatar: <GithubOutlined />,
     },
     {
-        title: <Link href='https://wyshuang.com/#/'>https://wyshuang.com</Link>,
+        title: <Link href='https://wyshuang.com/#/'> https://wyshuang.com </Link>,
         avatar: <img src={website} />,
     },
     {
@@ -50,15 +50,25 @@ const data = [
 ];
 
 const dataList = [
-    { timeSheet: '2019/9-2021/6', company: '文思海辉元辉科技(深圳)有限公司 、深圳名图信息技术有限公司' }, { timeSheet: '2018/3-2019/9', company: '深圳市华云信息技术有限公司' }, { timeSheet: '2017/3-2018/3', company: '上海海锐赢信息技术有限公司' },
+    { timeSheet: '2019/9-2021/6', company: '文思海辉元辉科技(深圳)有限公司 、深圳名图信息技术有限公司' },
+    { timeSheet: '2018/3-2019/9', company: '深圳市华云信息技术有限公司' },
+    { timeSheet: '2017/3-2018/3', company: '上海海锐赢信息技术有限公司' },
 ]
-
+const hkjcProject = [
+    { title: 1, content: '技术栈涉及react hooks、redux、Table2、enzyme、mocha、webSocket' },
+    { title: 2, content: '负责系统的用户权限、hot-key、铃声系统、任务系统的设计' },
+    { title: 3, content: '足球、篮球、赛马等赛事的投注监控，赔率调整,投注限制等页面的开发及调整' },
+    { title: 4, content: '不同类型赛事中bet ticker实时监控，及相应反馈' },
+]
 const Resume = (props) => {
     return (
         <div className={style._main}>
             <div className={style._part}>
                 <div className={style.part_left}>
-                    <div className={style._title}> 基本信息</div>
+                    <div className={style._title}>
+                        {' '}
+                        基本信息
+                    </div>
                     <Divider />
                     <List
                         itemLayout='horizontal'
@@ -73,29 +83,39 @@ const Resume = (props) => {
                         )}
                     />
                     <Divider />
-                    <div className={style._title}> 工作经历</div>
+                    <div className={style._title}>
+                        {' '}
+                        工作经历
+                    </div>
                     <List
-                        // header='2019/9-2021/6 | 文思海辉元辉科技(深圳)有限公司 、深圳名图信息技术有限公司'
                         bordered
                         split={false}
                         dataSource={dataList}
                         renderItem={(item) => (
                             <List.Item>
-                                <Typography.Text mark>{`[${item.timeSheet}]`}</Typography.Text>
+                                <Typography.Text mark>
+                                    {`[${item.timeSheet}]`}
+                                </Typography.Text>
+                                {' '}
+                                |
                                 {item.company}
                             </List.Item>
                         )}
                     />
-                    <div className={style._title}> 项目经历</div>
+                    <div className={style._title}>项目经历</div>
                     <List
-                        // header='2019/9-2021/6 | 文思海辉元辉科技(深圳)有限公司 、深圳名图信息技术有限公司'
+                        header={<h3> 深圳香港马会 integration console system（全英开发)</h3>}
                         bordered
                         split={false}
-                        dataSource={dataList}
+                        dataSource={hkjcProject}
                         renderItem={(item) => (
-                            <List.Item>
-                                <Typography.Text mark>{`[${item.timeSheet}]`}</Typography.Text>
-                                {item.company}
+                            <List.Item className={style._project_item}>
+                                <Typography.Text > 
+                                    {' '}
+                                    {item.title}
+                                    .&nbsp;
+                                </Typography.Text> 
+                                {item.content}
                             </List.Item>
                         )}
                     />
@@ -104,7 +124,9 @@ const Resume = (props) => {
             </div>
             <div className={style._download}>
                 <a href='./doc/resume-english.pdf' target='_blank'>
-                    <p>download</p>
+                    <p>
+                        download
+                    </p>
                 </a>
             </div>
         </div>
