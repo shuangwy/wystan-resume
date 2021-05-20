@@ -15,7 +15,7 @@
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0,
     "react/display-name": [0, { "ignoreTranspilerName": true }],
-    "react/jsx-one-expression-per-line": [2, { "allow": "literal" }],
+    "react/jsx-one-expression-per-line": [0, { "allow": "single-child" }],
     "react/jsx-indent": [2, 4, {"checkAttributes": true, "indentLogicalExpressions": true}],
     "constructor-super": 2,
     "for-direction": 2,
