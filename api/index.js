@@ -1,7 +1,7 @@
 
 let url
 const env = process.env.NODE_ENV
-if (env === 'dev') {
+if (env === 'development') {
     url = 'http://localhost:8080'
 } else {
     url = 'https://wyshuang.com'

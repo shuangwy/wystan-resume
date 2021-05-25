@@ -26,7 +26,7 @@ function App () {
                         return <Route path={path} key={path} render={() => {
                             document.title = title || 'wystan'
                             const Cmp = withRouter(component)
-                            return <Cmp/>
+                            return <Cmp />
                         }} {...rest} />
                     })}
                     <Route path='/login' component={withRouter(LoginPage)} />

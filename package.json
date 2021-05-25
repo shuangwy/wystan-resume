@@ -6,8 +6,8 @@
   "homepage": "./",
   "scripts": {
     "build": "cross-env NODE_ENC=production webpack --config webpack.prod.js",
-    "build-dev": "cross-env NODE_ENV=dev webpack --config webpack.dev.js",
-    "start": "cross-env NODE_ENV=dev webpack-dev-server --config webpack.dev.js",
+    "build-dev": "cross-env NODE_ENV=development webpack --config webpack.dev.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js",
     "build-dll": "webpack --config ./config/dll.config.js"
   },
   "devDependencies": {
