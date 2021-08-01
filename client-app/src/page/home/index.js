@@ -23,8 +23,8 @@ const data = [
     },
     {
         // title: <Link to='/layout-resume'>简历</Link>,
-        title: <a href='./doc/resume.pdf' target='_blank'>
-            <p>简历</p>
+        title: <a href='./doc/presentation.pdf' target='_blank'>
+            <p>presentation</p>
         </a>,
         profile: Avator,
         description: '暂未开放,看点别的吧',
