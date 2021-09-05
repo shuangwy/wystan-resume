@@ -50,9 +50,9 @@ const data = [
 ];
 
 const dataList = [
-    { timeSheet: '2019/9-2021/6', company: '文思海辉元辉科技(深圳)有限公司 、深圳名图信息技术有限公司' },
-    { timeSheet: '2018/3-2019/9', company: '深圳市华云信息技术有限公司' },
-    { timeSheet: '2017/3-2018/3', company: '上海海锐赢信息技术有限公司' },
+    // { timeSheet: '2019/9-2021/6', company: '文思海辉元辉科技(深圳)有限公司 、深圳名图信息技术有限公司' },
+    // { timeSheet: '2018/3-2019/9', company: '深圳市华云信息技术有限公司' },
+    // { timeSheet: '2017/3-2018/3', company: '上海海锐赢信息技术有限公司' },
 ]
 const hkjcProject = [
     { title: 1, content: '技术栈涉及react hooks、redux、Table2、enzyme、mocha、webSocket' },
